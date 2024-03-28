@@ -1,7 +1,11 @@
+import FindADoctor from "./components/find_a_doctor/FindADoctor";
+import Navbar from "./components/navbar/Navbar";
+
 function App() {
   return (
     <div>
-      <h1>My Landing Page using React and Vite</h1>
+      <Navbar/>
+      <FindADoctor/>
     </div>
   );
 } 

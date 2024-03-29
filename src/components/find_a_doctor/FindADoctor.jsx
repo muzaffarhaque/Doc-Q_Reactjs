@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { data } from './data';
 import './find_a_doctor.css';
 
-const FindADoctor = () => {
-  console.log(data);
+const FindADoctor = ({ searchTerm }) => {
+  const [filteredDoctors, setFilteredDoctors] = useState([]);
+
+  useEffect(() => {
+    const filtered = data.filter((doctor) =>
+      doctor.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredDoctors(filtered);
+  }, [searchTerm]);
 
   const renderStars = (rating) => {
     const yellowStars = rating;
@@ -23,38 +30,36 @@ const FindADoctor = () => {
 
   return (
     <>
-      <div className="docters-container">
+      <div className="doctors-container">
         <div className="heading">
           <p>Top Specialist In Neurology</p>
         </div>
         <div className="scroll-x">
-        <div className="titles-container">
-          <div className="headings">
-            <p className='mle-20'>Doctors Name</p>
-            <p className='mre-5'>Ratings</p>
-            <p className='mre-3'>Service</p>
-          </div>
-          <div className="doctor-list">
-            {data.map((doctor, index) => (
-              <div key={index} className='single-doctor'>
-                <div className="img-container">
-                  <img src={doctor.img} alt="" />
-                </div>
-                <div className="details">
-                  <p className='name'>{doctor.name}</p>
-                </div>
+          <div className="titles-container">
+            <div className="headings">
+              <p className='mle-20'>Doctors Name</p>
+              <p className='mre-5'>Ratings</p>
+              <p className='mre-3'>Service</p>
+            </div>
+            <div className="doctor-list">
+              {filteredDoctors.map((doctor, index) => (
+                <div key={index} className='single-doctor'>
+                  <div className="img-container">
+                    <img src={doctor.img} alt="" />
+                  </div>
+                  <div className="details">
+                    <p className='name'>{doctor.name}</p>
+                  </div>
                   <div className="stars">
                     {renderStars(doctor.ratings)}
                   </div>
-                <div className="exp">
-                  <p>Experience: <span>{doctor.experience}</span> years</p>
+                  <div className="exp">
+                    <p>Experience: <span>{doctor.experience}</span> years</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-
-        </div>
-
         </div>
       </div>
     </>

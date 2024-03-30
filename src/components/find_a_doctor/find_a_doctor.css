@@ -18,7 +18,7 @@
     color: #00305F;
     border-radius: 15px;
     padding: 10px 25px;
-    width: 1700px;
+    width: 1247px;
     max-height: 90px;
   }
   .mre-5{
@@ -49,7 +49,9 @@
   .name {
     margin-left: 29%;
     white-space: nowrap;
-    /* overflow: hidden; */
+    color: #00305F;
+    font-weight: 600;
+
   }
   
   .stars {
@@ -70,7 +72,8 @@
 }
 .exp{
       white-space: nowrap; 
-      /* overflow: hidden;  */
+      color: #00305F;
+      font-weight: 600
     
   }
 .exp span{
@@ -78,21 +81,23 @@
 font-size: 20px;
     
   }
+.exp span p{
+  color: #00305F;
+  font-weight: 600
+    
+  }
   .headings{
     display: flex;
     justify-content: space-between;
-    width: 1700px;
-    /* padding: 20px; */
+    width: 1247px;
     margin-right: 16%;
     font-weight: bold;
-    /* border: 1px solid black; */
     font-size: 25px;
     margin: 20px 0;
 
   }
  
   .scroll-x{
-    /* width: 100vw; */
     display: flex;
     flex-direction: column;
     overflow-x: scroll;
@@ -111,24 +116,28 @@ font-size: 20px;
    white-space: nowrap;
   }
   .heading p{
- font-size: 20px;
+ font-size: 23px;
  font-weight: 500;
   }
-  /* .doctors-container{
-    padding-left: 4rem;
-  } */
+
   /* responsive------------------- */
   @media (max-width: 1450px){
     .heading {
         max-width: 26%;
-      
     }
   }
   @media (max-width: 1200px){
     .heading {
-        max-width: 38%;
+      max-width: 38%;
       
     }
+  }
+  @media only screen and (min-width: 1347px) and (max-width: 1450px) {
+    /* Styles for laptops */
+    .doctors-container{
+      padding-right: 20px;
+    }
+
   }
   @media (max-width: 1000px){
     .heading p {
@@ -141,20 +150,19 @@ font-size: 20px;
   }
   @media (max-width: 768px){
     .heading {
-        max-width: 58%;
+        max-width: 38%;
     }
     
     .heading p {
         font-size: 19px;
         font-weight: 500;
     }
-    .docters-container {
-        font-size: 18px;
-        padding: 30px 29px;
-        padding-right: 0;
-        font-family: "Source Sans 3", sans-serif;
-        padding-right: 0;
-    }
+    .doctors-container {
+      font-size: 22px;
+      padding: 28px 33px;
+      padding-right: 0px;
+      font-family: "Source Sans 3", sans-serif;
+  }
   }
   @media (max-width: 500px){
     .heading p {
@@ -173,7 +181,6 @@ font-size: 20px;
         font-size: 16px;
     }
     .doctors-container {
-      /* padding-left: 10px; */
         font-size: 15px;
         padding-left: 15px;
         padding-right: 0;

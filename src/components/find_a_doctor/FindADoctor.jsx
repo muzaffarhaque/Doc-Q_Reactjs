@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { data } from './data';
 import './find_a_doctor.css';
+import { useLocation } from 'react-router-dom';
 
-const FindADoctor = ({ searchTerm }) => {
+const FindADoctor = () => {
+  const location=useLocation()
+  const param=new URLSearchParams(location.search)
   const [filteredDoctors, setFilteredDoctors] = useState([]);
-
+  const searchTerm=(param.get('search')??'');
   useEffect(() => {
     const filtered = data.filter((doctor) =>
       doctor.name.toLowerCase().includes(searchTerm.toLowerCase())

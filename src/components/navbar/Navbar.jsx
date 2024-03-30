@@ -3,8 +3,10 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosClose } from "react-icons/io";
 import './navbar.css';
 import FindADoctor from '../find_a_doctor/FindADoctor';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const handleMenu = () => {
@@ -14,6 +16,15 @@ const Navbar = () => {
     }
     setMenuOpen(!menuOpen);
   }
+  function serchChangeHandler(e){
+    setSearchTerm(e.target.value)
+    if(e.target.value){
+      navigate({search:`search=${e.target.value}`});
+    }else{
+      navigate({search:``});
+
+    }
+  }
   return (
     <>
       <header id='header' className='w-full flex items-center justify-between px-6 py-2 relative text-[#BBBBBB]'>
@@ -22,18 +33,18 @@ const Navbar = () => {
         </div>
         <nav>
           <ul className='wii flex gap-6 text-lg max-[991px]:flex-col max-[640px]:gap-3 max-[991px]:items-center '>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Our Services</a></li>
-            <li className='clr-blue'><a href="#">Find Doctors</a></li>
-            <li><a href="#">Login/Register</a></li>
+            <li><Link to="./home">Home</Link></li>
+            <li><Link to="/over-services">Our Services</Link></li>
+            <li className='clr-blue'><Link to="/find-doctor">Find Doctors</Link></li>
+            <li><Link to="/login">Login/Register</Link></li>
           </ul>
         </nav>
         <div className="search flex gap-4">
-          <input id='search' value={searchTerm} onChange={(e)=>{setSearchTerm(e.target.value)}} type="text" className='px-4 py-1 w-96 text-lg outline-none border border-gray-700 rounded-full' placeholder='Search..'/>
+          <input id='search' value={searchTerm} onChange={serchChangeHandler} type="text" className='px-4 py-1 w-96 text-lg outline-none border border-gray-700 rounded-full' placeholder='Search..'/>
           <div className={`hidden text-2xl border border-zinc-600 p-2 max-[991px]:block max-[991px]:text-lg`} onClick={handleMenu}>{menuOpen ? <IoIosClose /> : <RxHamburgerMenu />}</div>
         </div>
       </header>
-      <FindADoctor searchTerm={searchTerm} />
+    
     </>
   );
 }
